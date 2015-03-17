@@ -1,0 +1,27 @@
+body {
+    padding-bottom: 20px;
+}
+
+.header_title {
+	color: white;
+	weight: bold;
+}
+
+.float_left {
+	float: left;
+}
+
+.float_right {
+	float: right;
+}
+
+.foot {
+	padding-top: 20px;
+}
+
+.clock {
+	float: right;
+	min-width:100px;
+	width: auto !important;
+	width: 100px;
+}

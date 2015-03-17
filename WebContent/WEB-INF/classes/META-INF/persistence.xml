@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
+     <persistence-unit name="LeagueService"
+                       transaction-type="RESOURCE_LOCAL">
+     <provider>org.hibernate.ejb.HibernatePersistence</provider>
+     <class>com.leagueDB.Arena</class>
+     <class>com.leagueDB.Game</class>
+     <class>com.leagueDB.League</class>
+     <class>com.leagueDB.Player</class>
+     <class>com.leagueDB.PlayerStats</class>
+     <class>com.leagueDB.Roster</class>
+     <class>com.leagueDB.Schedule</class>
+     <class>com.leagueDB.Staff</class>
+     <class>com.leagueDB.Team</class>
+     <properties>
+         <property name="javax.persistence.jdbc.driver"
+                   value="org.apache.derby.jdbc.ClientDriver"/>
+         <property name="javax.persistence.jdbc.url"
+                   value="jdbc:derby://localhost:1527/sample"/>
+         <property name="javax.persistence.jdbc.user"
+                   value="JPBUTCHER"/>
+         <property name="javax.persistence.jdbc.password"
+                   value="conestogac"/>
+         <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyTenSixDialect"/>
+         <property name="hibernate.show_sql" value="false"/>
+      </properties>
+      </persistence-unit>
+</persistence>
