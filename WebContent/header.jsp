@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        <div class="container" style="clear: both;">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -28,6 +28,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="IndexServlet">Home</a></li>
 					<li><a href="ListTeamsServlet">Teams</a></li>
+					<li><a href="GamesServlet">Upcoming Games</a></li>
                 </ul>
                 <div class="clock">
                 	<!-- clock provided at: http://www.timeanddate.com/clocks/free.html -->

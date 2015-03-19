@@ -15,13 +15,13 @@ public class Game {
 	private Date gamedate;
 	@Column(name="GAMETIME")
 	private Time gametime;
-	@Column(name="HOMESCORE")
+	@Column(name="HOMESCORE", nullable=true)
 	private int homescore;
 	@Column(name="OT")
 	private String ot;
 	@Column(name="SO")
 	private String so;
-	@Column(name="VISITORSCORE")
+	@Column(name="VISITORSCORE", nullable=true)
 	private int visitorscore;
 	@ManyToOne
 	@JoinColumn(name="arena")

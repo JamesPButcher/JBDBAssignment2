@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.mapping.Set;
+
 import com.leagueDB.*;
 
 /**
@@ -88,16 +90,90 @@ public class TeamServlet extends HttpServlet {
 			
 			// Iterate through roster and display name, jersey number and position
 			Iterator<Roster> roster = team.getRoster().iterator();
-			String result = "<ul>";
+			// get shit
+			
+			
+			Roster[] temp = new Roster[255];
+			
+			
+			String result = "<h3>Forwards</h3>";
+			result += "<table class=\"table table-striped\">";
+			int count = 0;
 			while(roster.hasNext())
 			{
 				Roster r = roster.next();
-				result += "<li>" + r.getPlayer().getFirstname() + " "
-						+ r.getPlayer().getLastname() + " - "
-						+ r.getJersey() + " - " + r.getPosition() + "</li>";
+				temp[count] = r;
+				count++;
 				
 			}
-			result += "</ul>";
+
+			result += "<tr><th>Jersey</th><th>Last Name</th><th>First Name</th><th>Position</th><th>Weight</th><th>Height</th><th></th></tr>\n\r";
+			for (int i = 0; i < temp.length; i++)
+			{
+				if (temp[i] != null)
+				{
+					if (temp[i].getPosition().contains("ent") ||
+							temp[i].getPosition().contains("Left") ||
+							temp[i].getPosition().contains("Right"))
+					{
+						result += "<tr>";
+						result += "<td>" + temp[i].getJersey() + "</td>";
+						result += "<td>" + temp[i].getPlayer().getLastname() + "</td>";
+						result += "<td>" + temp[i].getPlayer().getFirstname() + "</td>";
+						result += "<td>" + temp[i].getPosition() + "</td>";
+						result += "<td>" + temp[i].getPlayer().getWeight() + "</td>";
+						result += "<td>" + temp[i].getPlayer().getHeight() + "</td>";
+						result += "<td><a href=\"PlayerServlet?playerId=" + temp[i].getPlayer().getPlayerId() +"\">View Player</a></td>";
+						result += "</tr>";
+					}
+				}
+			}
+			result += "</table>";
+			result += "<h3>Defense</h3>";
+			result += "<table class=\"table table-striped\">";
+			result += "<tr><th>Jersey</th><th>Last Name</th><th>First Name</th><th>Position</th><th>Weight</th><th>Height</th><th></th></tr>\n\r";
+			for (int i = 0; i < temp.length; i++)
+			{
+				if (temp[i] != null)
+				{
+					if (temp[i].getPosition().contains("fen"))
+					{
+						result += "<tr>";
+						result += "<td>" + temp[i].getJersey() + "</td>";
+						result += "<td>" + temp[i].getPlayer().getLastname() + "</td>";
+						result += "<td>" + temp[i].getPlayer().getFirstname() + "</td>";
+						result += "<td>" + temp[i].getPosition() + "</td>";
+						result += "<td>" + temp[i].getPlayer().getWeight() + "</td>";
+						result += "<td>" + temp[i].getPlayer().getHeight() + "</td>";
+						result += "<td><a href=\"PlayerServlet?playerId=" + temp[i].getPlayer().getPlayerId() +"\">View Player</a></td>";
+						result += "</tr>";
+					}
+				}
+			}
+			result += "</table>";
+			
+			result += "<h3>Goalies</h3>";
+			result += "<table class=\"table table-striped\">";
+			result += "<tr><th>Jersey</th><th>Last Name</th><th>First Name</th><th>Position</th><th>Weight</th><th>Height</th><th></th></tr>\n\r";
+			for (int i = 0; i < temp.length; i++)
+			{
+				if (temp[i] != null)
+				{
+					if (temp[i].getPosition().contains("oal"))
+					{
+						result += "<tr>";
+						result += "<td>" + temp[i].getJersey() + "</td>";
+						result += "<td>" + temp[i].getPlayer().getLastname() + "</td>";
+						result += "<td>" + temp[i].getPlayer().getFirstname() + "</td>";
+						result += "<td>" + temp[i].getPosition() + "</td>";
+						result += "<td>" + temp[i].getPlayer().getWeight() + "</td>";
+						result += "<td>" + temp[i].getPlayer().getHeight() + "</td>";
+						result += "<td><a href=\"PlayerServlet?playerId=" + temp[i].getPlayer().getPlayerId() +"\">View Player</a></td>";
+						result += "</tr>";
+					}
+				}
+			}
+			result += "</table>";
 			
 			request.setAttribute("players", result);
 			
