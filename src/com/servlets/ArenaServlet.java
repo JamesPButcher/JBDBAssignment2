@@ -1,7 +1,6 @@
 package com.servlets;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -16,21 +15,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.leagueDB.Arena;
 import com.leagueDB.Game;
-import com.leagueDB.Player;
-import com.leagueDB.Roster;
 
 /**
- * Servlet implementation class GamesServlet
+ * Servlet implementation class ArenaServlet
  */
-@WebServlet("/GamesServlet")
-public class GamesServlet extends HttpServlet {
+@WebServlet("/ArenaServlet")
+public class ArenaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GamesServlet() {
+    public ArenaServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -64,29 +62,27 @@ public class GamesServlet extends HttpServlet {
 			em = emf.createEntityManager();
 			em.getTransaction().begin();
 			
-			List<Game> upcomingGames = em.createQuery("SELECT g FROM Game g "
-					+ "WHERE g.homescore = null AND "
-					+ "g.visitorscore = null "
-					+ "order by g.gamedate ASC, g.gametime ASC", Game.class)
-					//.setParameter("gameDate", new Date(System.currentTimeMillis()))
+			List<Arena> upcomingGames = em.createQuery("SELECT a FROM Arena a "
+								+ "order by a.arenaname ASC", Arena.class)
 					.getResultList();
-			Iterator<Game> gameIt = upcomingGames.iterator();
+			Iterator<Arena> gameIt = upcomingGames.iterator();
 			
-			String games = "<h2>Upcoming Games</h2><br/><table class=\"table table-striped\">";
+			String games = "<h2>Arena Information</h2><br/><table class=\"table table-striped\">";
 			
-			games += "<tr><th>Date</th><th>Time</th><th>Home Team</th><th>Visitor Team</th><th>Arena</th></tr>";
+			games += "<tr><th>Name</th><th>Address</th><th>Phone</th><th>Capacity</th></tr>";
 			
 			
 			while(gameIt.hasNext())
 			{
-				Game g = gameIt.next();
+				Arena g = gameIt.next();
 				
 				games += "<tr>"
-						+ "<td>" + g.getGamedate() + "</td>"
-						+ "<td>" + g.getGametime() + "</td>"
-						+ "<td>" + g.getHome().getTeamname() + "</td>"
-						+ "<td>" + g.getVisitor().getTeamname() + "</td>"
-						+ "<td>" + g.getArena().getArenaname() + "</td>"
+						+ "<td>" + g.getArenaname() + "</td>"
+						+ "<td>" + g.getStreetaddress() +",<br/>" + g.getCity() + ", "
+							+ g.getState_province() + "<br/>" + g.getPostalcode()
+							+ ", " + g.getCountry()+  "</td>"
+						+ "<td>" + g.getPhone() + "</td>"
+						+ "<td>" + g.getCapacity() + "</td>"
 						+ "</tr>";
 			}
 			

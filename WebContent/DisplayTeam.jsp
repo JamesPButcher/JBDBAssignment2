@@ -7,6 +7,7 @@
 <p>Head Coach: ${headCoach}</p>
 <p>Assistant Coach: ${asstCoach}</p>
 <p>Trainer: ${trainer}</p>
+<p><a href="ScheduleServlet?teamId=<%= ((Team)request.getAttribute("team")).getTeamId() %>">View Schedule</a></p>
 <p>Players:</p>
 <%= request.getAttribute("players") %>
 

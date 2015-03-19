@@ -16,13 +16,13 @@ public class Game {
 	@Column(name="GAMETIME")
 	private Time gametime;
 	@Column(name="HOMESCORE", nullable=true)
-	private int homescore;
+	private String homescore;
 	@Column(name="OT")
 	private String ot;
 	@Column(name="SO")
 	private String so;
 	@Column(name="VISITORSCORE", nullable=true)
-	private int visitorscore;
+	private String visitorscore;
 	@ManyToOne
 	@JoinColumn(name="arena")
 	private Arena arena;
@@ -56,10 +56,11 @@ public class Game {
 	public void setGametime(Time gametime) {
 		this.gametime = gametime;
 	}
-	public int getHomescore() {
+	public String getHomescore() {
 		return homescore;
 	}
-	public void setHomescore(int homescore) {
+	public void setHomescore(String homescore) {
+		
 		this.homescore = homescore;
 	}
 	public String getOt() {
@@ -74,10 +75,11 @@ public class Game {
 	public void setSo(String so) {
 		this.so = so;
 	}
-	public int getVisitorscore() {
+	public String getVisitorscore() {
 		return visitorscore;
 	}
-	public void setVisitorscore(int visitorscore) {
+	public void setVisitorscore(String visitorscore) {
+		
 		this.visitorscore = visitorscore;
 	}
 	public Arena getArena() {

@@ -8,13 +8,15 @@
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.6.0/bootstrap-table.min.css">
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.6.0/bootstrap-table.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Hockey League</title>
 </head>
 <body>
-	<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar navbar-inverse">
         <div class="container" style="clear: both;">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -29,6 +31,8 @@
                     <li><a href="IndexServlet">Home</a></li>
 					<li><a href="ListTeamsServlet">Teams</a></li>
 					<li><a href="GamesServlet">Upcoming Games</a></li>
+					<li><a href="StandingServlet">League Standings</a></li>
+					<li><a href="ArenaServlet">Arena Information</a></li>
                 </ul>
                 <div class="clock">
                 	<!-- clock provided at: http://www.timeanddate.com/clocks/free.html -->
